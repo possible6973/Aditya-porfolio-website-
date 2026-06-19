@@ -1,0 +1,134 @@
+.hero-image-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-front-layer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 92px 0 34px;
+  box-sizing: border-box;
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+}
+
+.hero-character-float {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: float3d 8s ease-in-out infinite;
+}
+
+.hero-character-img {
+  width: auto;
+  height: min(74svh, 700px);
+  max-width: min(92vw, 460px);
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  filter: drop-shadow(25px 35px 30px rgba(0, 0, 0, 0.8))
+    drop-shadow(-5px -5px 15px rgba(255, 255, 255, 0.08));
+}
+
+/* hidden on mobile — only swapped in via GSAP on desktop */
+.hero-about-img {
+  display: none;
+  opacity: 0;
+}
+
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 24vh;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--backgroundColor) 100%
+  );
+  z-index: 20;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .hero-image-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+  }
+
+  .hero-front-layer {
+    padding: 0;
+    align-items: flex-end;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-character-float {
+    width: 100vw;
+    height: 100vh;
+    animation: none;
+    transform: translateY(-4vh);
+    will-change: transform, opacity;
+  }
+
+  .hero-character-img {
+    position: absolute;
+    left: 50%;
+    object-fit: contain;
+    display: block;
+    translate: -50% 0;
+  }
+
+  .hero-primary-img {
+    bottom: 0;
+    height: min(92vh, 900px);
+    max-width: min(46vw, 720px);
+    object-position: center bottom;
+    will-change: transform, opacity;
+    filter: drop-shadow(25px 35px 30px rgba(0, 0, 0, 0.85))
+      drop-shadow(-5px -5px 15px rgba(255, 255, 255, 0.06));
+  }
+
+  .hero-about-img {
+    display: block;
+    top: -10vh;
+    height: min(108vh, 960px);
+    max-width: min(46vw, 700px);
+    object-position: center bottom;
+    opacity: 0;
+    will-change: transform, opacity;
+    filter: drop-shadow(28px 40px 34px rgba(0, 0, 0, 0.88))
+      drop-shadow(-8px -8px 18px rgba(255, 255, 255, 0.05));
+  }
+}
+
+@keyframes float3d {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

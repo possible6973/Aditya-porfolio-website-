@@ -1,0 +1,435 @@
+/* 3D Feature Video Carousel Styles (Vanilla CSS) */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+/* Background smoky glows inside the carousel section */
+.carousel-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(150px);
+  opacity: 0.2;
+}
+
+.carousel-glow.left {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.2) 0%, transparent 70%);
+  top: -20%;
+  left: -10%;
+}
+
+.carousel-glow.right {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.15) 0%, transparent 70%);
+  bottom: -20%;
+  right: -10%;
+}
+
+/* Main Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* Carousel 3D perspective wrapper */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1050px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  touch-action: pan-y; /* Allows drag/swipe horizontally, scroll page vertically */
+  overflow: visible;
+}
+
+/* Individual Slide Card */
+.carousel-slide {
+  position: absolute;
+  width: 270px;
+  height: 450px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background-color: #0e0b11;
+  border: 1.5px solid rgba(194, 164, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              filter 0.6s ease;
+  cursor: grab;
+  user-select: none;
+  will-change: transform, opacity, filter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide:active {
+  cursor: grabbing;
+}
+
+/* Glowing center active card */
+.carousel-slide.center-slide {
+  border-color: rgba(194, 164, 255, 0.75);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 
+              0 0 30px rgba(194, 164, 255, 0.25);
+  cursor: pointer;
+}
+
+/* Contain the video fully inside the card without cropping */
+.carousel-video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #000;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Full video visible, no cropping */
+  background-color: #000;
+  border-radius: 1.15rem;
+  pointer-events: none; /* Let clicks pass through to slide */
+}
+
+/* Play Overlay Icon on hover for the center card */
+.carousel-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: rgba(11, 8, 12, 0.7);
+  border: 1.5px solid rgba(194, 164, 255, 0.4);
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.8rem;
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(194, 164, 255, 0.3);
+}
+
+.carousel-slide.center-slide:hover .carousel-play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: rgba(194, 164, 255, 0.2);
+  border-color: rgba(194, 164, 255, 0.85);
+}
+
+/* Label overlay at the bottom of the card */
+.carousel-slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(11, 8, 12, 0.98) 0%, rgba(11, 8, 12, 0.8) 50%, rgba(11, 8, 12, 0.3) 80%, transparent 100%);
+  backdrop-filter: blur(2px);
+  z-index: 8;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.carousel-slide-category {
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 700;
+  color: #c2a4ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 3px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.carousel-slide-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Arrow buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(11, 8, 12, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.carousel-nav-btn:hover {
+  border-color: rgba(194, 164, 255, 0.5);
+  color: #c2a4ff;
+  background-color: rgba(194, 164, 255, 0.1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+  opacity: 0.8;
+}
+
+.carousel-nav-btn.left-btn {
+  left: -80px;
+}
+
+.carousel-nav-btn.right-btn {
+  right: -80px;
+}
+
+/* Pagination Dots */
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background-color: rgba(194, 164, 255, 0.4);
+}
+
+.carousel-dot.active {
+  width: 40px;
+  background-color: #c2a4ff;
+  box-shadow: 0 0 8px rgba(194, 164, 255, 0.6);
+}
+
+/* Cinematic Fullscreen Lightbox Modal */
+.carousel-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(7, 5, 8, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  animation: lightboxFadeIn 0.3s ease-out forwards;
+  box-sizing: border-box;
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  position: relative;
+  width: 90%;
+  max-width: 65rem;
+  aspect-ratio: 16/9; /* Cinematic landscape for desktop */
+  background-color: #000;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(194, 164, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 
+              0 0 40px rgba(194, 164, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shows full video, no cropping */
+  border-radius: 1.25rem;
+  background-color: #000;
+}
+
+/* Close Button inside Lightbox */
+.lightbox-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: rgba(11, 8, 12, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close-btn:hover {
+  background-color: rgba(194, 164, 255, 0.2);
+  border-color: rgba(194, 164, 255, 0.8);
+  color: #c2a4ff;
+  transform: scale(1.05) rotate(90deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .carousel-wrapper {
+    max-width: 800px;
+    height: 410px;
+  }
+  .carousel-slide {
+    width: 210px;
+    height: 350px;
+  }
+  .carousel-nav-btn.left-btn {
+    left: 15px;
+  }
+  .carousel-nav-btn.right-btn {
+    right: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1rem 0;
+  }
+  .carousel-wrapper {
+    height: 520px;
+  }
+  .carousel-slide {
+    width: 260px;
+    height: 462px;
+    border-radius: 1.25rem;
+  }
+  .carousel-video-container {
+    border-radius: 1.15rem;
+  }
+  .carousel-video {
+    border-radius: 1.15rem;
+  }
+  .carousel-slide-overlay {
+    padding: 1rem 1rem 0.8rem 1rem;
+    border-bottom-left-radius: 1.15rem;
+    border-bottom-right-radius: 1.15rem;
+  }
+  .carousel-slide-category {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .carousel-slide-title {
+    font-size: 12px;
+  }
+  .carousel-nav-btn {
+    display: none !important; /* Hide navigation buttons completely on mobile/tablet since swipe/drag works */
+  }
+  .carousel-pagination {
+    gap: 0.45rem;
+    margin-top: 1.5rem;
+  }
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .carousel-dot.active {
+    width: 14px;
+    height: 6px;
+    border-radius: 3px;
+    box-shadow: 0 0 6px rgba(194, 164, 255, 0.5);
+  }
+  .lightbox-content {
+    width: 85%;
+    max-width: 22rem;
+    aspect-ratio: 9/16; /* Portrait for reels on mobile! */
+  }
+  .lightbox-close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-wrapper {
+    height: 450px;
+  }
+  .carousel-slide {
+    width: 220px;
+    height: 391px;
+  }
+}
+
+@media (max-width: 360px) {
+  .carousel-wrapper {
+    height: 400px;
+  }
+  .carousel-slide {
+    width: 190px;
+    height: 338px;
+  }
+}

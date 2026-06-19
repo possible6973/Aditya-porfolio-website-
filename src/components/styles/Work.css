@@ -1,0 +1,580 @@
+/* --- cinematic film negative theme variables (integrated with website colors) --- */
+:root {
+  --film-bg: var(--backgroundColor, #0b080c);
+  --film-frame-bg: #110e14;
+  --film-accent: var(--accentColor, #c2a4ff);
+  --film-accent-glow: rgba(194, 164, 255, 0.45);
+  --film-accent-dim: rgba(194, 164, 255, 0.18);
+  --film-red: #ff3333;
+  --film-border: #1a1720;
+}
+
+/* --- work section base --- */
+.work-section {
+  position: relative;
+  z-index: 2;
+  background-color: var(--film-bg);
+  padding-top: 80px;
+  padding-bottom: 90px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* --- ambient smoky cinematic glows --- */
+.work-smoke-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+}
+
+.work-smoke-glow.left {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.05) 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+}
+
+.work-smoke-glow.right {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(170, 66, 255, 0.045) 0%, transparent 70%);
+  bottom: -20%;
+  right: -10%;
+}
+
+/* --- header typography & flex layout --- */
+.work-header-container {
+  position: relative;
+  z-index: 4;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 25px;
+}
+
+.work-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.work-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.featured-tag {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--film-accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px rgba(194, 164, 255, 0.4);
+}
+
+.work-title-glowing {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #eae5ec;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.work-title-glowing > span {
+  color: var(--film-accent);
+  text-shadow: 0 0 25px var(--film-accent-glow);
+}
+
+.work-subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(234, 229, 236, 0.6);
+  margin: 10px 0 0 0;
+  letter-spacing: 0.5px;
+}
+
+/* --- premium floating portrait card on right --- */
+.work-header-image {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(194, 164, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(194, 164, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  flex-shrink: 0;
+}
+
+.work-header-image:hover {
+  transform: translateY(-8px) rotate(2deg);
+  border-color: var(--film-accent);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 35px rgba(194, 164, 255, 0.25);
+}
+
+.work-header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.work-header-image:hover img {
+  transform: scale(1.05);
+}
+
+.work-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(11, 8, 12, 0.8) 0%, transparent 40%),
+              radial-gradient(circle at center, transparent 30%, rgba(11, 8, 12, 0.2) 100%);
+  pointer-events: none;
+}
+
+/* --- horizontal scroll wrapper --- */
+.work-scroll-outer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar but keep scroll functional */
+  -ms-overflow-style: none;
+  cursor: grab;
+  position: relative;
+  padding-left: max(40px, calc((100vw - 1400px) / 2));
+  padding-right: max(40px, calc((100vw - 1400px) / 2));
+  box-sizing: border-box;
+  z-index: 3; /* Render in front of character */
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+.work-scroll-outer::-webkit-scrollbar {
+  display: none;
+}
+
+.work-scroll-outer:active {
+  cursor: grabbing;
+}
+
+/* --- curved film strip wrapper --- */
+.work-flex.film-strip {
+  display: flex;
+  width: max-content;
+  position: relative;
+  gap: 0; /* Touch each other for continuous film strip effect */
+  padding: 20px 0;
+  transform: rotate(-1.5deg); /* Slope perspective winding through 3D space */
+  transform-origin: left center;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(194, 164, 255, 0.015) 50%,
+    transparent 100%
+  );
+}
+
+.work-flex.film-strip::before,
+.work-flex.film-strip::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--film-accent-dim),
+    var(--film-accent),
+    var(--film-accent-dim)
+  );
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: 0 0 8px var(--film-accent-glow);
+}
+
+.work-flex.film-strip::after {
+  top: 100%;
+}
+
+/* --- film cell / frame --- */
+.film-frame {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  background: var(--film-frame-bg);
+  border-right: 1px solid var(--film-border);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* The wave translateY and rotate are driven inline by React! */
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.film-frame:first-child {
+  border-left: 1px solid var(--film-border);
+}
+
+.film-frame:hover {
+  background: #17131b;
+  z-index: 5;
+  border-color: rgba(194, 164, 255, 0.25);
+  box-shadow: 0 15px 40px rgba(194, 164, 255, 0.08);
+}
+
+/* --- top & bottom film edge tracks --- */
+.film-edge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #0e0a12;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.film-edge.bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* --- physical backlit sprocket holes --- */
+.sprocket {
+  width: 22px;
+  height: 14px;
+  background-color: rgba(234, 229, 236, 0.9); /* backlit white/light-grey sprockets */
+  border-radius: 3px;
+  border: 1px solid rgba(194, 164, 255, 0.25);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.film-frame:hover .sprocket {
+  background-color: #ffffff;
+  border-color: var(--film-accent);
+  box-shadow: 0 0 8px rgba(194, 164, 255, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* --- retro edge-printed markings --- */
+.film-text {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--film-accent);
+  opacity: 0.75;
+  text-shadow: 0 0 4px rgba(194, 164, 255, 0.35);
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.film-frame:hover .film-text {
+  opacity: 1;
+  text-shadow: 0 0 6px var(--film-accent-glow);
+}
+
+.film-text.brand {
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.film-text.frame-num {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.film-text.process {
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.film-text.barcode {
+  margin-left: auto;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+}
+
+/* --- cinematic video frame container --- */
+.film-media-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid #0e0a12;
+  border-bottom: 4px solid #0e0a12;
+  padding: 0 10px; /* simulated film margins */
+  box-sizing: border-box;
+}
+
+.film-media-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px; /* soft rounded frame corners */
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: block;
+}
+
+.film-frame:hover .film-media-container video {
+  transform: scale(1.03);
+}
+
+/* --- hyper-realistic film grain overlay --- */
+.film-grain-overlay {
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  border-radius: 4px;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 3;
+  animation: filmGrain 0.4s steps(6) infinite;
+}
+
+@keyframes filmGrain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -2%); }
+  30% { transform: translate(2%, 1%); }
+  50% { transform: translate(-2%, 2%); }
+  70% { transform: translate(1%, -1%); }
+  90% { transform: translate(-1%, 1%); }
+}
+
+/* --- camera HUD display --- */
+.film-hud {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 4;
+  pointer-events: none;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.film-frame:hover .film-hud {
+  opacity: 0.9;
+}
+
+.rec-dot {
+  color: var(--film-red);
+  text-shadow: 0 0 6px rgba(255, 51, 51, 0.8);
+  font-weight: bold;
+}
+
+.fps-indicator {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* --- film label metadata tag --- */
+.film-metadata-card {
+  padding: 22px 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-top: 1px solid rgba(194, 164, 255, 0.1);
+  border-bottom: 3px double rgba(194, 164, 255, 0.25);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.film-frame:hover .film-metadata-card {
+  border-top-color: rgba(194, 164, 255, 0.25);
+  border-bottom-color: rgba(194, 164, 255, 0.6);
+  box-shadow: inset 0 -5px 15px rgba(194, 164, 255, 0.02);
+}
+
+.metadata-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.metadata-index {
+  font-family: monospace;
+  font-size: 11px;
+  color: #77777a;
+}
+
+.metadata-category {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--film-accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(194, 164, 255, 0.15);
+}
+
+.metadata-title {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #eae5ec;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+
+.film-frame:hover .metadata-title {
+  color: #ffffff;
+}
+
+.metadata-divider {
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed rgba(194, 164, 255, 0.15);
+  margin-bottom: 12px;
+}
+
+.film-frame:hover .metadata-divider {
+  border-top-color: rgba(194, 164, 255, 0.35);
+}
+
+.metadata-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tech-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  color: #666668;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.tech-value {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #b0b0b5;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+.film-frame:hover .tech-value {
+  color: #e0e0e5;
+}
+
+/* --- Scroll hint fade gradient on right edge --- */
+.work-scroll-outer::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  background: linear-gradient(90deg, transparent 0%, var(--film-bg) 100%);
+  pointer-events: none;
+}
+
+/* --- responsive layout scales --- */
+@media only screen and (max-width: 1400px) {
+  .work-title-glowing {
+    font-size: 55px;
+  }
+  .film-frame {
+    width: 400px;
+  }
+  .film-metadata-card {
+    padding: 18px 20px;
+  }
+  .metadata-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .tech-value {
+    font-size: 11px;
+  }
+  .film-edge {
+    height: 36px;
+    padding: 0 15px;
+  }
+  .sprocket {
+    width: 18px;
+    height: 11px;
+  }
+  .film-text {
+    font-size: 10px;
+  }
+  .work-header-image {
+    width: 160px;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .work-flex.film-strip {
+    transform: none; /* Flatten strip on smaller viewports */
+  }
+  .work-header-image {
+    display: none; /* Hide character card on tablets/mobile for clean usability */
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .work-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .work-title-glowing {
+    font-size: 38px;
+    margin-top: 10px;
+  }
+  .work-scroll-outer {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 25px;
+  }
+  .film-frame {
+    width: 320px;
+  }
+  .film-edge {
+    height: 32px;
+    padding: 0 10px;
+  }
+  .sprocket {
+    width: 15px;
+    height: 9px;
+  }
+  .film-text {
+    font-size: 9px;
+  }
+  .film-text.brand, .film-text.process {
+    margin-left: 10px;
+  }
+  .metadata-title {
+    font-size: 16px;
+  }
+  .tech-value {
+    font-size: 10px;
+  }
+}
