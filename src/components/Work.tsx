@@ -4,11 +4,6 @@ import "./styles/Work.css";
 
 const DEMO_CARDS = [
   {
-    imgUrl: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=700&fit=crop",
-    alt: "Angel Sangeet (Wedding Event Coverage)",
-    linkUrl: "/videos/angel-sangeet.mp4"
-  },
-  {
     imgUrl: "https://images.unsplash.com/photo-1519689680058-324335c77eb2?w=400&h=700&fit=crop",
     alt: "Baby Moon (Cinematic Family & Interview Film)",
     linkUrl: "/videos/baby-moon-talking-head.mp4"
