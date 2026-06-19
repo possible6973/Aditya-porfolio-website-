@@ -24,11 +24,6 @@ const DEMO_CARDS = [
     linkUrl: "/videos/dentist-promotion-video-editor-surat.mp4"
   },
   {
-    imgUrl: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=700&fit=crop",
-    alt: "Documentary Film Edit (Creative Storytelling)",
-    linkUrl: "/videos/documentary-editing-services-surat.mp4"
-  },
-  {
     imgUrl: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&h=700&fit=crop",
     alt: "Interior Design Walkthrough (Real Estate Ad)",
     linkUrl: "/videos/interior-walkthrough-video-production-surat.mp4"

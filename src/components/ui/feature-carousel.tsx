@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import "./feature-carousel.css";
 
@@ -350,7 +351,7 @@ export const FeatureCarousel = React.forwardRef<HTMLDivElement, FeatureCarouselP
         </div>
 
         {/* Fullscreen Cinematic Lightbox */}
-        {lightboxVideo && (
+        {lightboxVideo && createPortal(
           <div className="carousel-lightbox" onClick={() => setLightboxVideo(null)}>
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <button
@@ -364,7 +365,8 @@ export const FeatureCarousel = React.forwardRef<HTMLDivElement, FeatureCarouselP
               
               <LightboxVideo src={lightboxVideo.linkUrl || ""} />
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     );
