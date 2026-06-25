@@ -84,7 +84,7 @@ const Navbar = () => {
         </motion.a>
         <div className="navbar-connect-wrap">
           <motion.a
-            href="mailto:hello@yourdomain.com"
+            href="mailto:possible6973@gmail.com"
             className="navbar-connect"
             data-cursor="disable"
             variants={itemVariants}
@@ -121,3 +121,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

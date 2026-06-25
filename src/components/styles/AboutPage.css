@@ -1,0 +1,336 @@
+.about-page-wrapper {
+  background-color: #0b080c;
+  color: #eae5ec;
+  padding-top: 120px;
+}
+
+.about-hero-section {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.about-h1-glowing {
+  font-size: clamp(38px, 6vw, 76px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.about-h1-glowing span {
+  color: var(--accentColor);
+  text-shadow: 0 0 30px rgba(194, 164, 255, 0.2);
+}
+
+.about-hero-lead {
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: rgba(234, 229, 236, 0.8);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Narrative Grid */
+.about-narrative-section {
+  padding: 60px 0;
+}
+
+.about-narrative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.narrative-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.narrative-img-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(194, 164, 255, 0.15);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.narrative-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.narrative-img-box:hover .narrative-img {
+  transform: scale(1.03);
+}
+
+.narrative-img-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(11, 8, 12, 0.8), transparent);
+  pointer-events: none;
+}
+
+.equipment-card {
+  background: rgba(194, 164, 255, 0.03);
+  border: 1px solid rgba(194, 164, 255, 0.1);
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.equipment-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 10px;
+}
+
+.equipment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.equipment-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(234, 229, 236, 0.8);
+}
+
+.equipment-list svg {
+  color: var(--accentColor);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.narrative-right h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.narrative-right h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.narrative-right p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(234, 229, 236, 0.75);
+  margin-bottom: 20px;
+}
+
+/* Trust signals */
+.about-trust-signals {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trust-head,
+.faq-head {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.trust-head h2,
+.faq-head h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.trust-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.trust-card:hover {
+  background: rgba(194, 164, 255, 0.03);
+  border-color: rgba(194, 164, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.trust-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: rgba(194, 164, 255, 0.15);
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.trust-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.trust-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(234, 229, 236, 0.65);
+  margin: 0;
+}
+
+/* FAQ */
+.about-faq-section {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.faq-item {
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 24px 30px;
+  border-radius: 12px;
+}
+
+.faq-item h3 {
+  font-size: 17px;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.faq-item p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(234, 229, 236, 0.7);
+  margin: 0;
+}
+
+/* CTA */
+.about-cta-section {
+  padding: 80px 0;
+}
+
+.about-cta-box {
+  background: linear-gradient(135deg, rgba(11, 8, 12, 0.9) 0%, rgba(194, 164, 255, 0.05) 100%);
+  border: 1px solid rgba(194, 164, 255, 0.15);
+  padding: 60px 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-cta-box h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.about-cta-box p {
+  font-size: 16px;
+  color: rgba(234, 229, 236, 0.8);
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.about-cta-btns {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: var(--accentColor);
+  color: #0b080c;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(194, 164, 255, 0.3);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media only screen and (max-width: 1024px) {
+  .about-narrative-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-cta-box {
+    padding: 40px 20px;
+  }
+}

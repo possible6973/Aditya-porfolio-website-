@@ -1,0 +1,116 @@
+.conversion-widgets {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.conversion-widgets.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.widget-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltips */
+.widget-tooltip {
+  position: absolute;
+  right: 65px;
+  background: rgba(11, 8, 12, 0.95);
+  color: #eae5ec;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  border: 1px solid rgba(194, 164, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.widget-btn:hover .widget-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover scales */
+.widget-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 12px 40px 0 rgba(194, 164, 255, 0.25);
+}
+
+/* Individual Colors */
+.whatsapp-btn {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.4);
+  color: #25d366;
+}
+.whatsapp-btn:hover {
+  background: rgba(37, 211, 102, 0.3);
+  text-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+}
+
+.call-btn {
+  background: rgba(0, 191, 255, 0.15);
+  border-color: rgba(0, 191, 255, 0.4);
+  color: #00bfff;
+}
+.call-btn:hover {
+  background: rgba(0, 191, 255, 0.3);
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+.consult-btn {
+  background: rgba(194, 164, 255, 0.15);
+  border-color: rgba(194, 164, 255, 0.4);
+  color: #c2a4ff;
+}
+.consult-btn:hover {
+  background: rgba(194, 164, 255, 0.3);
+  text-shadow: 0 0 10px rgba(194, 164, 255, 0.5);
+}
+
+/* Mobile responsive positioning */
+@media only screen and (max-width: 768px) {
+  .conversion-widgets {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .widget-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+  .widget-tooltip {
+    display: none; /* Hide tooltips on mobile to avoid overlap */
+  }
+}

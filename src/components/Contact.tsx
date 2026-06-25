@@ -49,12 +49,18 @@ const Contact = () => {
           <motion.div className="contact-box" variants={boxVariants}>
             <h4>Email</h4>
             <p>
-              <a href="mailto:hello@yourdomain.com" data-cursor="disable">
-                hello@yourdomain.com
+              <a href="mailto:possible6973@gmail.com" data-cursor="disable">
+                possible6973@gmail.com
+              </a>
+            </p>
+            <h4>Phone</h4>
+            <p>
+              <a href="tel:9726784722" data-cursor="disable">
+                +91 97267 84722
               </a>
             </p>
             <h4>Based In</h4>
-            <p>India · Remote Worldwide</p>
+            <p>Madhuram Circle, Dindoli, Surat, Gujarat</p>
             <h4>Response Time</h4>
             <p>Within 24 hours</p>
           </motion.div>
@@ -105,7 +111,7 @@ const Contact = () => {
 
           <motion.div className="contact-box" variants={boxVariants}>
             <h2>
-              Cinematographer &amp; <br /> Video Editor <span>based in India</span>
+              Cinematographer &amp; <br /> Video Editor <span>based in Surat</span>
             </h2>
             <h5>
               <MdCopyright /> 2025

@@ -1,0 +1,228 @@
+.services-page-wrapper {
+  background-color: #0b080c;
+  color: #eae5ec;
+  padding-top: 120px;
+}
+
+.services-hero {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.services-h1-glowing {
+  font-size: clamp(38px, 6vw, 76px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.services-h1-glowing span {
+  color: var(--accentColor);
+  text-shadow: 0 0 30px rgba(194, 164, 255, 0.2);
+}
+
+.services-lead {
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: rgba(234, 229, 236, 0.8);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Services Page Grid */
+.services-grid-section {
+  padding: 60px 0;
+}
+
+.services-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.service-page-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 40px 30px;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.service-page-card:hover {
+  background: rgba(194, 164, 255, 0.03);
+  border-color: rgba(194, 164, 255, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.service-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(194, 164, 255, 0.1);
+  color: var(--accentColor);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(194, 164, 255, 0.2);
+}
+
+.service-card-meta {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card-id {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(194, 164, 255, 0.4);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.service-page-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px;
+}
+
+.service-card-desc {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(234, 229, 236, 0.7);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.service-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.service-card-tag {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accentColor);
+  background: rgba(194, 164, 255, 0.05);
+  border: 1px solid rgba(194, 164, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.service-card-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-top: auto;
+}
+
+.service-page-card:hover .service-card-link {
+  color: var(--accentColor);
+}
+
+/* Local focus section */
+.services-local-focus {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.local-focus-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.local-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.local-text p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(234, 229, 236, 0.75);
+  margin-bottom: 20px;
+}
+
+.local-stats-row {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.local-stat h3 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accentColor);
+  margin: 0 0 6px;
+}
+
+.local-stat p {
+  font-size: 13px;
+  color: rgba(234, 229, 236, 0.6);
+  margin: 0;
+}
+
+.local-cta-box {
+  background: rgba(194, 164, 255, 0.03);
+  border: 1px solid rgba(194, 164, 255, 0.15);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.local-cta-box h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.local-cta-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(234, 229, 236, 0.7);
+  margin-bottom: 24px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1024px) {
+  .services-page-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .local-focus-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .services-page-grid {
+    grid-template-columns: 1fr;
+  }
+  .local-stats-row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
