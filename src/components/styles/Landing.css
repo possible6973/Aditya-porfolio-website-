@@ -192,7 +192,7 @@
   right: auto;
   transform: none;
   bottom: 42px;
-  top: inherit;
+  top: auto;
   z-index: 30;
   max-width: min(360px, 82vw);
   text-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
@@ -390,5 +390,14 @@ h2.landing-info-h2 {
   }
   h2.landing-info-h2 {
     font-size: 75px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  h2.landing-info-h2 {
+    display: none !important;
+  }
+  .landing-info h2 {
+    margin-top: 4px;
   }
 }
